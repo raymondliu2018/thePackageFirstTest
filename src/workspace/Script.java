@@ -17,7 +17,6 @@ public class Script implements SuperScript {
     }
     
     public static void end() {
-        GameMaster.disable();
         Manager.queueWipeAll();
     }
 

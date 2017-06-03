@@ -8,9 +8,9 @@ import thePackage.Entity;
 import thePackage.Key;
 import thePackage.Text;
 
-public class KeyDebugTrinket extends Entity implements KeyDebugTrinketSettings, IsDebugger{
+class KeyDebugTrinket extends TrinketBase implements KeyDebugTrinketSettings, IsDebugger{
     private HashMap<String,Text> individualKeys;
-    public KeyDebugTrinket(ArrayList<Key> keys) {
+    protected KeyDebugTrinket(ArrayList<Key> keys) {
         super();
         int counter = 0;
         individualKeys = new HashMap<>();
@@ -18,20 +18,23 @@ public class KeyDebugTrinket extends Entity implements KeyDebugTrinketSettings, 
             counter += 1;
             bindCodeToAction(key.toString(),(a) -> {
                 Text temp = individualKeys.get(key.toString());
-                temp.setColor(Color.RED);
+                temp.setColor(WARNING_COLOR);
             }, (a) -> {
                 Text temp = individualKeys.get(key.toString());
-                temp.setColor(Color.BLACK);
+                temp.setColor(STANDARD_COLOR);
             });
-            this.bindKeyToAction(key.getInput(), key.toString());
+            bindKeyToAction(key.getInput(), key.toString());
             Text temp = new Text();
-            temp.setColor(Color.BLACK);
+            temp.setColor(STANDARD_COLOR);
             temp.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,FONT_SIZE));
             temp.setMessage(Character.toString((char)(key.getInput())));
-            temp.setCenterX(rect.getCornerX() + OFFSET_X * counter);
+            temp.setCenterX(rect.getCenterX() + OFFSET_X * counter);
             temp.setCenterY(rect.getCenterY());
             addStat(temp);
+            
         }
+        sprite.addImage("thePackage/debugger/KeyDebugTrinket.png", "main", true);
+        resize();
     }
     
     public void subUpdate() {

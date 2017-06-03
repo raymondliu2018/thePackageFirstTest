@@ -1,6 +1,6 @@
 package thePackage;
 
-public abstract class Manipulator {
+abstract class Manipulator {
     protected static boolean enabled = true;
     public static void disable() {
         enabled = false;

@@ -2,7 +2,7 @@ package thePackage;
 
 import java.util.TimerTask;
 import workspace.Script;
-public final class Looper extends TimerTask implements GameData{
+final class Looper extends TimerTask implements GameData{
     
     private boolean enabled = true;
     
@@ -24,11 +24,11 @@ public final class Looper extends TimerTask implements GameData{
         Drawing.run();
     }
     
-    public void enable(){
+    protected void enable(){
         enabled = true;
     }
     
-    public void disable() {
+    protected void disable() {
         enabled = false;
     }
 }

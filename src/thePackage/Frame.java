@@ -5,7 +5,7 @@ import javax.swing.*;
 public final class Frame extends JFrame
 {
     private Panel panel;
-    public Frame(String name){
+    protected Frame(String name){
         panel = new Panel();
         add(panel);
         addKeyListener(Keyboard.getInstance());

@@ -1,6 +1,6 @@
 package thePackage;
 
-public class Button{
+class Button{
     private Entity owner;
     private int input;
     private boolean toggled = false;
@@ -18,17 +18,19 @@ public class Button{
     /**
      * @param input code to be executed when this Button's button is pressed above this Entity
      */
-    public void whenPressed( ButtonCommand input ) {commandPressed = input;}
+    protected void whenPressed( ButtonCommand input ) {commandPressed = input;}
     
     /**
      * @param input code to be executed when this Button's button is released above this Entity
      */
-    public void whenReleased( ButtonCommand input ) {commandReleased = input;}
+    
+    protected void whenReleased( ButtonCommand input ) {commandReleased = input;}
     
     /**
      * @param input code to be executed when the Mouse is moved above this Entity
      */
-    public void whenMoved( ButtonCommand input ) {commandMoved = input;}
+    
+    protected void whenMoved( ButtonCommand input ) {commandMoved = input;}
     
     /**
     * @return get the button this Button is bound to
@@ -39,22 +41,22 @@ public class Button{
     * @return get the state of this Button
     */
     public boolean getToggle() {return toggled;}
-    
-    public void toggleOn(){
+     
+    protected void toggleOn(){
         if (!toggled && commandPressed != null) {
             commandPressed.execute(this);
         }
         toggled = true;
     }
     
-    public void toggleOff(){
+    protected void toggleOff(){
         if (toggled && commandReleased != null) {
             commandReleased.execute(this);
         }
         toggled = false;
     }
     
-    public void moved(){
+    protected void moved(){
         if (commandMoved != null) {
             commandMoved.execute(this);
         }

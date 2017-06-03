@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public final class Manager extends Manipulator implements GameData{
     private static ArrayList<VoidCommand> queuedCommands = new ArrayList<>();
-    public static void run() {
+    protected static void run() {
         if (enabled){
             for (VoidCommand command : queuedCommands) {
                 command.run();

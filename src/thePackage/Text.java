@@ -34,7 +34,7 @@ public final class Text
         this.color = color;
     }
     
-    public void update() {
+    protected void update() {
         if (message$ != null) {
             message = message$.value();
         }

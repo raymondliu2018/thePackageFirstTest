@@ -3,8 +3,6 @@ package thePackage;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
-import thePackage.GameData;
-import thePackage.Utility;
 public final class Loader implements GameData {
     public static BufferedImage loadImage(String input){
         for (int index = 0; index < GameData.files.size(); index++){

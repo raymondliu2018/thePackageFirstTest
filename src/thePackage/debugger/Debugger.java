@@ -1,7 +1,7 @@
 
-package thePackage;
+package thePackage.debugger;
 
-import thePackage.debugger.DebugTool;
+import thePackage.Manager;
 public class Debugger {
     private static boolean enabled = false;
     public static void enabled() {

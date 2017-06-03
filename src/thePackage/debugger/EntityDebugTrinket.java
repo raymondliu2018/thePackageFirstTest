@@ -2,23 +2,27 @@ package thePackage.debugger;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import thePackage.Entity;
 import thePackage.GameData;
 import thePackage.Manager;
+import thePackage.Sprite;
 import thePackage.Text;
+import thePackage.Utility;
 
-public class EntityDebugTrinket extends Entity implements IsDebugger, EntityDebugTrinketSettings{
+class EntityDebugTrinket extends TrinketBase implements IsDebugger, EntityDebugTrinketSettings{
     private Entity exampleEntity;
     private ArrayList<Entity> discoveredEntities;
     private ControlDebugTrinket controlDebugTrinket;
     private RectDebugTrinket rectDebugTrinket;
-    public EntityDebugTrinket (Entity input) {
+    private IndicatorDebugTrinket indicatorDebugTrinket;
+    protected EntityDebugTrinket (Entity input) {
         super();
         exampleEntity = input;
         discoveredEntities = new ArrayList<>();
         Text entityType = new Text();
-        entityType.setColor(Color.BLACK);
+        entityType.setColor(STANDARD_COLOR);
         entityType.setFont(new Font(Font.SANS_SERIF,Font.BOLD,ENTITY_TYPE_FONT_SIZE));
         entityType.setMessage(exampleEntity.getClass().getName());
         entityType.setCenterX(() -> {return rect.getCenterX() + ENTITY_TYPE_OFFSET_X;});
@@ -26,9 +30,16 @@ public class EntityDebugTrinket extends Entity implements IsDebugger, EntityDebu
         addStat(entityType);
         
         Text entityNumber = new Text();
-        entityNumber.setColor(Color.BLACK);
+        entityNumber.setColor(STANDARD_COLOR);
         entityNumber.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,24));
         entityNumber.setMessage(() -> {
+            int temp = countInstances();
+            if (temp == 0){
+                entityNumber.setColor(WARNING_COLOR);
+            }
+            else {
+                entityNumber.setColor(STANDARD_COLOR);
+            }
             return Integer.toString(countInstances());
         });
         entityNumber.setCenterX(() -> {return rect.getCenterX() + ENTITY_COUNT_OFFSET_X;});
@@ -45,6 +56,8 @@ public class EntityDebugTrinket extends Entity implements IsDebugger, EntityDebu
         rectDebugTrinket.getRect().setCornerY(rect.getCornerY() + rect.getHeight() + RECT_DEBUG_TRINKET_OFFSET_Y);
         Manager.queueNewEntity(rectDebugTrinket);
         
+        indicatorDebugTrinket = new IndicatorDebugTrinket();
+        //DOESN'T NEED TO BE ADDED
         sprite.addImage("thePackage/debugger/EntityDebugTrinket.png","main",true);
         resize();
     }
@@ -61,7 +74,6 @@ public class EntityDebugTrinket extends Entity implements IsDebugger, EntityDebu
                 entityRemoved(input);
             }
         }
-        
     }
     
     private int countInstances() {
@@ -78,6 +90,7 @@ public class EntityDebugTrinket extends Entity implements IsDebugger, EntityDebu
         discoveredEntities.add(input);
         controlDebugTrinket.entityAdded(input);
         rectDebugTrinket.entityAdded(input);
+        indicatorDebugTrinket.entityAdded(input);
         
     }
     
@@ -85,6 +98,7 @@ public class EntityDebugTrinket extends Entity implements IsDebugger, EntityDebu
         discoveredEntities.remove(input);
         controlDebugTrinket.entityRemoved(input);
         rectDebugTrinket.entityRemoved(input);
+        indicatorDebugTrinket.entityRemoved(input);
     }
 
 }

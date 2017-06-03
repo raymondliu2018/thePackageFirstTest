@@ -11,7 +11,7 @@ public final class Camera extends Manipulator implements GameData
     private static ArrayList<Entity> focused;
     private static Background background;
     
-    public static void run()
+    protected static void run()
     {
         if (enabled) {
             centerX = 0.0;
@@ -45,9 +45,9 @@ public final class Camera extends Manipulator implements GameData
         }
     }
     
-    public static double getShiftX() { return centerX - GameMaster.getFrame().getWidth()/2;}
+    protected static double getShiftX() { return centerX - GameMaster.getFrame().getWidth()/2;}
     
-    public static double getShiftY() { return centerY - GameMaster.getFrame().getHeight()/2;}
+    protected static double getShiftY() { return centerY - GameMaster.getFrame().getHeight()/2;}
     
     public static void setBackground(String input) {
         setBackground(Loader.loadImage(input));

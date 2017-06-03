@@ -77,14 +77,14 @@ public abstract class Entity
     public final int getLayer() {return rect.getLayer();}
         
     //Update
-    public final void update() {
+    final void update() {
         tick();
         rect.update();
         rotationUpdate();
         subUpdate();
     }
     
-    public final void rotationUpdate() {
+    final void rotationUpdate() {
         if (rotating){
             double temp = rect.getAngle();
             if (temp != Double.MAX_VALUE){
@@ -93,7 +93,7 @@ public abstract class Entity
         }
     }
     
-    public final void tick() {timer += 1;}
+    final void tick() {timer += 1;}
     
     /**
      * override this method for code that should be run every time the game loops

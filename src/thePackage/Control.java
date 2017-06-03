@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
-public final class Control extends Manipulator implements GameData{
-    public static void run() {
+final class Control extends Manipulator implements GameData{
+    protected static void run() {
         if (enabled){
             keyboard();
             mouse();
         }
     }
     
-    public static void keyboard() {    
+    protected static void keyboard() {    
         ArrayList <KeyEvent> cacheOn = Keyboard.getInstance().getCacheOn();
         ArrayList <KeyEvent> cacheOff = Keyboard.getInstance().getCacheOff();
         if(!cacheOn.isEmpty()){
@@ -43,7 +43,7 @@ public final class Control extends Manipulator implements GameData{
         }
     }
     
-    public static void mouse() {
+    protected static void mouse() {
         ArrayList <MouseEvent> cacheOn = Mouse.getInstance().getCacheOn();
         ArrayList <MouseEvent> cacheOff = Mouse.getInstance().getCacheOff();
         ArrayList <MouseEvent> cacheMove = Mouse.getInstance().getCacheMove();

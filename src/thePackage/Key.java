@@ -6,14 +6,14 @@ public final class Key {
     private boolean toggled = false;
     private KeyCommand commandPressed = null;
     private KeyCommand commandReleased = null;
-    public Key(Entity e1, char c1, KeyCommand a1, KeyCommand a2) {
+    protected Key(Entity e1, char c1, KeyCommand a1, KeyCommand a2) {
         input = (int) c1;
         commandPressed = a1;
         commandReleased = a2;
         owner = e1;
     }
     
-    public Key(Entity e1, int i1, KeyCommand a1, KeyCommand a2) {
+    protected Key(Entity e1, int i1, KeyCommand a1, KeyCommand a2) {
         input = i1;
         commandPressed = a1;
         commandReleased = a2;
@@ -23,12 +23,12 @@ public final class Key {
     /**
      * @param input code to be executed when this Key's character is pressed
      */
-    public void whenPressed( KeyCommand input ) {commandPressed = input;}
+    protected void whenPressed( KeyCommand input ) {commandPressed = input;}
     
     /**
      * @param input code to be executed when this Key's character is released
      */
-    public void whenReleased( KeyCommand input ) {commandReleased = input;}
+    protected void whenReleased( KeyCommand input ) {commandReleased = input;}
     
     /**
      * @return get the character this Key is bound to
@@ -40,14 +40,14 @@ public final class Key {
      */
     public boolean getToggle() {return toggled;}
    
-    public void toggleOn(){
+    protected void toggleOn(){
         if (!toggled && commandPressed != null) {
             commandPressed.execute(this);
         }
         toggled = true;
     }
     
-    public void toggleOff(){
+    protected void toggleOff(){
         if (toggled && commandReleased != null) {
             commandReleased.execute(this);
         }

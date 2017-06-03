@@ -5,12 +5,12 @@ import javax.swing.*;
 import java.awt.image.BufferedImage;
 import java.awt.*;
 
-public final class Panel extends JPanel {
+final class Panel extends JPanel {
     private CopyOnWriteArrayList <CopyOnWriteArrayList<Sprite>> stack1 = new CopyOnWriteArrayList<>();
     private CopyOnWriteArrayList <Text> stack2 = new CopyOnWriteArrayList<>();
-    public void preparePaint(CopyOnWriteArrayList <CopyOnWriteArrayList<Sprite>> input) {stack1 = input;}
+    protected void preparePaint(CopyOnWriteArrayList <CopyOnWriteArrayList<Sprite>> input) {stack1 = input;}
     
-    public void prepareWrite(CopyOnWriteArrayList<Text> input){stack2 = input;}
+    protected void prepareWrite(CopyOnWriteArrayList<Text> input){stack2 = input;}
         
     public void paintComponent(Graphics g) {
         super.paintComponent(g);

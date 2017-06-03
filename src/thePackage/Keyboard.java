@@ -13,7 +13,7 @@ public final class Keyboard implements KeyListener{
         cacheOff = new ArrayList<>();
     }
     
-    public static Keyboard getInstance() {
+    protected static Keyboard getInstance() {
         if( instance == null ) {
             instance = new Keyboard();
         }
@@ -31,13 +31,13 @@ public final class Keyboard implements KeyListener{
     public void keyTyped(KeyEvent input) {
     }
     
-    public ArrayList<KeyEvent> getCacheOn() {
+    protected ArrayList<KeyEvent> getCacheOn() {
         ArrayList<KeyEvent> temp = new ArrayList<>(cacheOn);
         cacheOn.clear();
         return temp;
     }
     
-    public ArrayList<KeyEvent> getCacheOff() {
+    protected ArrayList<KeyEvent> getCacheOff() {
         ArrayList<KeyEvent> temp = new ArrayList<>(cacheOff);
         cacheOff.clear();
         return temp;

@@ -14,7 +14,7 @@ public final class Sprite{
     private DoubleCommand x$ = null;
     private DoubleCommand y$ = null;
     private Entity owner;
-    public Sprite(Entity input) {
+    protected Sprite(Entity input) {
         owner = input;
         images = new HashMap<>();
         rotatedImages = new HashMap<>();
@@ -26,7 +26,7 @@ public final class Sprite{
         rotatedImages = new HashMap<>();
     }
     
-    public void update() {
+    protected void update() {
         if (x$ != null) {
             x = x$.value();
         }

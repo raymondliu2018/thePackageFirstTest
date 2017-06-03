@@ -20,7 +20,7 @@ public final class GameMaster implements GameData
     
     public static Frame getFrame() {return frame;}
     
-    public static void stop() {
+    protected static void stop() {
         looper.cancel();
         looper.purge();
     }
@@ -34,11 +34,11 @@ public final class GameMaster implements GameData
     
     public static int getWidth() {return getFrame().getWidth();}
     
-    public static void enable() {
+    protected static void enable() {
         loop.enable();
     }
     
-    public static void disable() {
+    protected static void disable() {
         loop.disable();
     }
 }

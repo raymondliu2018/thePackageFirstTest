@@ -6,14 +6,14 @@ import java.awt.image.BufferedImage;
 import java.awt.Graphics;
 
 public final class Utility implements GameData{
-    public static void addSprite( Sprite sprite, int index ) {
+    protected static void addSprite( Sprite sprite, int index ) {
         while (GameData.sprites.size() <= index + 1) {
             GameData.sprites.add( new CopyOnWriteArrayList<>() );
         }
         GameData.sprites.get(index).add(sprite);
     }
     
-    public static void addLayer( Entity entity, int index ) {
+    protected static void addLayer( Entity entity, int index ) {
         while (GameData.layers.size() <= index + 1) {
             GameData.layers.add( new ArrayList<>() );
         }
@@ -48,7 +48,7 @@ public final class Utility implements GameData{
         return null;
     }
     
-    public static boolean checkClick(int x0, int y0, int x1, int y1, int x2, int y2){
+    protected static boolean checkClick(int x0, int y0, int x1, int y1, int x2, int y2){
         if ( (x0 > x1 && x0 < x2) && (y0 > y1 && y0 < y2) ){ return true;}
         return false;
     }

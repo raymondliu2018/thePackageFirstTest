@@ -5,7 +5,7 @@ import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-public class Mouse implements MouseListener, MouseMotionListener{
+final class Mouse implements MouseListener, MouseMotionListener{
     private static Mouse instance = null;
     private ArrayList<MouseEvent> cacheOn;
     private ArrayList<MouseEvent> cacheOff;
@@ -44,13 +44,13 @@ public class Mouse implements MouseListener, MouseMotionListener{
     
     public void mouseDragged(MouseEvent input){}
     
-    public ArrayList<MouseEvent> getCacheOn() {
+    protected ArrayList<MouseEvent> getCacheOn() {
         ArrayList<MouseEvent> temp = new ArrayList<>(cacheOn);
         cacheOn.clear();
         return temp;
     }
     
-    public ArrayList<MouseEvent> getCacheOff() {
+    protected ArrayList<MouseEvent> getCacheOff() {
         ArrayList<MouseEvent> temp = new ArrayList<>(cacheOff);
         cacheOff.clear();
         return temp;

@@ -2,15 +2,15 @@ package thePackage;
 
 import workspace.Script;
 
-public final class Collision extends Manipulator implements GameData
+final class Collision extends Manipulator implements GameData
 {
-    public static void run() {
+    protected static void run() {
         if (enabled) {
             checkCollision();
         }
     }
     
-    public static void checkCollision(){
+    protected static void checkCollision(){
         int x,y,z;
         int max_1 = GameData.layers.size();
         for(x=0;x<max_1;x++)
@@ -54,7 +54,7 @@ public final class Collision extends Manipulator implements GameData
         }
     }
     
-    public static void collide(Rect a, Rect b){
+    protected static void collide(Rect a, Rect b){
         double Vax = a.getXVelocity();
         double Vay = a.getYVelocity();
         double Vbx = b.getXVelocity();

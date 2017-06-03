@@ -3,9 +3,9 @@ package thePackage;
 import java.util.List;
 import workspace.Script;
 
-public final class Update extends Manipulator implements GameData
+final class Update extends Manipulator implements GameData
 {
-    public static void run() {
+    protected static void run() {
         for( Entity entity: GameData.allEntities ){
             entity.update();
         }
