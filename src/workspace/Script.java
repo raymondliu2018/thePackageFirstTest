@@ -1,5 +1,5 @@
 package workspace;
-import thePackage.*
+import thePackage.*;
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
