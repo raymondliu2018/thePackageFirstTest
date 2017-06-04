@@ -34,11 +34,11 @@ public final class GameMaster implements GameData
     
     public static int getWidth() {return getFrame().getWidth();}
     
-    protected static void enable() {
+    public static void enable() {
         loop.enable();
     }
     
-    protected static void disable() {
+    public static void disable() {
         loop.disable();
     }
 }
